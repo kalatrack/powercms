@@ -1,0 +1,32 @@
+/**
+
+
+*/
+body {
+    height: 100%; width: 100%;
+}
+header{
+    height: 70px;
+    background: #00ff90;
+    margin: 0; padding: 0; text-align: left;
+}
+header h1 {
+    padding: 1em; margin: 0;
+}
+#main {
+    height: 600px; width: 100%; margin: 0; padding: 0;background: #ffd800;
+    
+}
+footer{
+    height: 2em; padding: 1em; margin: 0;
+    clear: both; background: #00ff90;
+}
+#navigation{
+    height: 100%; width: 150px; float: left; background: #b6ff00; margin: 0; padding: 0 2em;
+}
+#navigation a:hover{
+    color: #ff00dc;
+}
+#page{
+    float: left; height: 100%;padding-left: 2em;vertical-align: top;background: #ffd800;
+}
