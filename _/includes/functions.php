@@ -64,6 +64,7 @@ function navigation($subjects, $pages){
            $output.="</li>";
      }
         $output.="</ul>";
+        return $output;
 }
 
 

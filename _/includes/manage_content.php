@@ -13,38 +13,12 @@
         $page_ids = null;
     }
 ?>
-<?php  $subject_set = find_subject(); confirm_query($subject_set);?>
 <div id="main">
     <div id="navigation">
-        <ul class="subjects">
-<?php   while($subject = mysqli_fetch_assoc($subject_set)){ ?>
-<?php 
-echo "<li";
-if($subject["id"]==$subject_ids){
-echo ' class="selected"';
-}
-echo " >" ;
-?>
-                <a href="manage_content.php?subject=<?php echo urlencode($subject["id"]);?>"><?php echo $subject["manu_name"] . "(" . $subject["id"].")" ;?></a>
-<?php $page_set = find_pages_for_subject($subject["id"]); confirm_query($page_set); ?>
-                <ul class="pages">
-<?php while($page = mysqli_fetch_assoc($page_set)){ ?>
-<?php 
-echo "<li ";
-if($page["id"]==$page_ids){
-echo 'class="selected"';
-}
-echo " >" ;
-?>
-<a href="manage_content.php?page=<?php echo urlencode($page["id"]);?>"><?php echo $page["menu_name"];?></a></li>
-                </ul>
-        <?php } ?>
-            </li>
-<?php }?>
-        </ul>
+        <?php echo navigation($subject_ids, $page_ids)?>
     </div>
-        <div id="page">
-            <h2>Manage Content</h2>
+<div id="page">
+    <h2>Manage Content</h2>
                 <?php echo $subject_ids;?><br>
                 <?php echo $page_ids;?>
                 <p>Welcome to our content management system</p>

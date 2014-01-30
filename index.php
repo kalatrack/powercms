@@ -17,7 +17,7 @@
 <div id="main">
     <div id="navigation">
 <?php 
-    navigation($subject_ids, $page_ids);
+   echo navigation($subject_ids, $page_ids);
 ?>
     </div>
         <div id="page">
