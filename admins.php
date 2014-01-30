@@ -1,3 +1,4 @@
+<?php include_once("_/includes/connections.php");?>
 <?php include("_/includes/layout/header.php");?>
         <div id="main">
             <div id="navigation">
