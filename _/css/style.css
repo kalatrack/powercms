@@ -31,7 +31,7 @@ footer{
     float: left; height: 100%;padding-left: 2em;vertical-align: top;background: #ffd800;
 }
 .selected{
-    font-weight: bold;
+    font-weight: bold;font-family: 'Courier New'; font: #000;
 }
 ul.subjects{ margin: 1em 0; padding-left: 0; list-style: none;
 }
