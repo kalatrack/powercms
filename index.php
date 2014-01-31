@@ -16,18 +16,19 @@
 
 <div id="main">
     <div id="navigation">
-<?php 
-   echo navigation($subject_ids, $page_ids);
-?>
+        <?php
+            
+            echo navigation($subject_ids, $page_ids);
+        ?>
     </div>
-        <div id="page">
-            <h2>Manage Content</h2>
-                <?php echo $subject_ids;?><br>
-                <?php echo $page_ids;?>
-                        <li><a href="_/includes/manage_content.php">Manage Website Content</a></li>
-                        <li><a href="admins.php">Manage Admins</a></li>
+    <div id="page">
+        <h2>Manage Content</h2>
+        <?php echo $subject_ids;?><br>
+        <?php echo $page_ids;?>
+        <li><a href="_/includes/manage_content.php">Manage Website Content</a></li>
+        <li><a href="admins.php">Manage Admins</a></li>
                     </ul>
-        </div>
+    </div>
 </div>
 <?php mysqli_free_result($subject_set);?>
 <?php include("_/includes/layout/footer.php");?>
