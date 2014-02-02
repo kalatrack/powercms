@@ -1,5 +1,5 @@
    <footer>
-                <p><center>CopyRight 2013</center></p>
+                <p><center><b>CopyRight 2013</b></center></p>
    </footer>
     </body>
 </html>

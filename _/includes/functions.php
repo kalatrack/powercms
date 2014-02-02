@@ -1,4 +1,9 @@
 <?php
+    function safe($safes){
+        global $connection;
+        $safing=mysqli_real_escape_string($connection,$safes);
+        return $safing;
+    }
         function confirm_query($result_set){
             if(!$result_set){
                 die("Unable to execute query Please Check Query Syntax. :(");
@@ -22,6 +27,8 @@
     }
     
     function navigation($subjects, $pages){
+        global $subject_set; 
+        global $page_set;
         $subject_set = find_subject(); 
         confirm_query($subject_set);
     
@@ -66,6 +73,24 @@
             $output.="</ul>";
             return $output;
     }
-    
-    
+    function find_subject_by_id($subject_id_no){
+        global $connection;        
+        $query = "select * from subjects where id={safe($subject_id_no)} limit 1";
+        $subject_i = mysqli_query($connection, $query);
+        if($subject = mysqli_fetch_assoc($subject_i)){
+            return $subject;
+        }else{  
+        return NULL;
+        }
+    }
+    function find_page_by_id($page_id_no){
+        global $connection;        
+        $query = "select * from pages where id={safe($page_id_no)} limit 1";
+        $page_i = mysqli_query($connection, $query);
+        if($page = mysqli_fetch_assoc($page_i)){
+            return $page;
+        }else{  
+        return NULL;
+        }
+    }
 ?>
