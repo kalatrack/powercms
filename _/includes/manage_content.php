@@ -1,32 +1,20 @@
 <?php require_once("connections.php");?>
 <?php require_once("functions.php");?>
 <?php include("layout/header.php");?>
-<?php
-    if(isset($_GET["subject"])){
-        $subject_ids = $_GET["subject"];
-        $page_ids = null;
-    }elseif (isset($_GET["page"])) {
-        $subject_ids = null;
-        $page_ids = $_GET["page"];
-    }else{
-        $subject_ids = null;
-        $page_ids = null;
-    }
-?>
+<?php content_manage(); ?>
 <div id="main">
     <div id="navigation">
-        <?php echo navigation($subject_ids, $page_ids);?>
+<?php echo navigation($current_subject,  $current_page);?>
+        <br>
+        <a href="new_subject.php">+ Add a Subject</a>
     </div>
     <div id="manage_content">
         <h2>Manage Content</h2>
-        <?php if($subject_ids){ ?>
+        <?php if($current_subject){ ?>
         <b>Manage Subject:</b><br>
-        <?php $current_subject = find_subject_by_id($subject_ids);?>
-        <b>Menu Name:</b><?php echo "<b><i>".strtoupper($current_subject["manu_name"])."</i></b>"; echo " <br>   ".$current_subject["time_stamp"]; ?>
-        <?php }elseif ($page_ids){ ?>
-        <?php $current_page= find_page_by_id($page_ids);?>
+        <b>Menu Name:</b><?php echo "<b><i>".strtoupper($current_subject["manu_name"])."</i></b>"; echo " <br>   "; ?>
+        <?php }elseif ($current_page){ ?>
         <b>Manage Page</b><br>
-
         <b>Manu Name:</b><?php echo strtoupper($current_page["menu_name"])."<br>".ucwords($current_page["content"]);  ?>
         <?php }else{ ?>
         Please Selet Page:

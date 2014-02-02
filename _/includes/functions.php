@@ -4,12 +4,11 @@
         $safing=mysqli_real_escape_string($connection,$safes);
         return $safing;
     }
-        function confirm_query($result_set){
+    function confirm_query($result_set){
             if(!$result_set){
                 die("Unable to execute query Please Check Query Syntax. :(");
             }
         }
-    
     function find_subject(){
         global $connection;
     
@@ -25,7 +24,6 @@
     
         return $page_set;
     }
-    
     function navigation($subjects, $pages){
         global $subject_set; 
         global $page_set;
@@ -83,6 +81,20 @@
         return NULL;
         }
     }
+    function content_manage(){
+        global $current_subject;
+        global $current_page; 
+        if(isset($_GET["subject"])){
+        $current_subject = find_subject_by_id($_GET["subject"]);
+        $current_page = NULL;
+    }elseif (isset($_GET["page"])) {
+        $current_subject= NULL;
+        $current_page = find_page_by_id($_GET["page"]);
+    }else{
+        $current_subject = NULL;
+        $current_page = NULL;
+    }
+    }
     function find_page_by_id($page_id_no){
         global $connection;        
         $query = "select * from pages where id={safe($page_id_no)} limit 1";
@@ -92,5 +104,17 @@
         }else{  
         return NULL;
         }
+    }
+    function subject_position(){
+         $subject_set = find_subject();
+         $subject_count = mysqli_num_rows($subject_set);
+         for($count=1;$count<=($subject_count+1);$count++){ 
+    
+         echo "<option value=\"{$count}\">{$count}</option>";
+         }
+    }
+    function redirect_to($place){
+        header("Location:{$place}");
+        exit;
     }
 ?>

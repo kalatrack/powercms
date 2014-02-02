@@ -1,0 +1,9 @@
+We cannot display message Bcoz we just ReDirect the is no way of display about your success or failure in case of using redirect method.
+Reason is that, A redirect create a new Response Cycle we a browser send a new request of redirection it will lost all previous data. To enable Display Content of result you must use 
+Session for a Pariticular User or Self.
+There a Key Roll Played by Session.
+1- UserAuthentication.
+2-Hold Data During a Redirect. 
+$message, $error are example.
+3-Frequently Refer to Data
+$username, $account_type. etcs.
