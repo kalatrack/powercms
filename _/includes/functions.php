@@ -117,4 +117,19 @@
         header("Location:{$place}");
         exit;
     }
+        function selected_position(){
+            global $current_subject;
+         $subject_set = find_subject();
+         $subject_count = mysqli_num_rows($subject_set);
+    
+         for($count=1;$count<=$subject_count;$count++){ 
+    
+         echo "<option value=\"{$count}\" ";
+         if($current_subject['position'] == $count){
+             echo " selected ";
+         }
+         echo ">{$count}</option>";
+         }
+    }
+    
 ?>

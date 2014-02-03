@@ -1,3 +1,4 @@
+<?php require_once("session.php");?>
 <?php require_once("connections.php");?>
 <?php require_once("functions.php");?>
 <?php include("layout/header.php");?>
@@ -9,10 +10,12 @@
         <a href="new_subject.php">+ Add a Subject</a>
     </div>
     <div id="manage_content">
+        <?php echo se()?>
         <h2>Manage Content</h2>
         <?php if($current_subject){ ?>
         <b>Manage Subject:</b><br>
         <b>Menu Name:</b><?php echo "<b><i>".strtoupper($current_subject["manu_name"])."</i></b>"; echo " <br>   "; ?>
+        <a href="edit_subject.php?subject=<?php echo $current_subject['id']?>">Edit Subject</a>
         <?php }elseif ($current_page){ ?>
         <b>Manage Page</b><br>
         <b>Manu Name:</b><?php echo strtoupper($current_page["menu_name"])."<br>".ucwords($current_page["content"]);  ?>

@@ -1,3 +1,4 @@
+<?php require_once("session.php");?>
 <?php require_once("connections.php");?>
 <?php require_once("functions.php");?>
 <?php include("layout/header.php");?>
@@ -7,6 +8,7 @@
         <?php echo navigation($current_subject,  $current_page);?>
     </div>
     <div id="page">
+        <?php echo se()?>
         <h2>Create Subject</h2>
         <form action="create_subject.php" method="post">
             <p>Subject Name:

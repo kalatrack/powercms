@@ -1,3 +1,5 @@
+<?php session_start();?>
+<?php require_once("session.php");?>
 <?php require_once("connections.php");?>
 <?php require_once("functions.php");?>
 
@@ -15,10 +17,10 @@ if (isset($_POST['submit'])){
     $Date = mysqli_query($connection,$query);
    
     if($Date){
-        echo "your query is successed ";
+        $_SESSION["message"] = "your query is successed ";
         redirect_to("manage_content.php");
     }else{
-        echo "query is gonna Failed ";
+        $_SESSION["message"] = "query is gonna Failed ";
         redirect_to("manage_content.php?subject=1");
         
     }

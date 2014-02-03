@@ -33,8 +33,11 @@ footer{
 .selected{
     font-weight: bold; font-family: 'Courier New'; font: #000;
 }
-ul.subjects{ margin: 1em 0; padding-left: 0; list-style: none;
+ul.subjects{ margin: 1em 0; padding-left: 0; list-style: none; 
 }
 ul.pages{
-    padding-left: 2em; list-style: square; font-weight: normal;
+    padding-left: 0; list-style: square; font-weight: normal;
+}
+div.msg{
+    border: 2px solid #000; color: #0026ff; font-weight: bold; margin: 2em 0;padding: 1em 0;
 }
