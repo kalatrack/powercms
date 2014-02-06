@@ -55,14 +55,14 @@
                 // Start of Li tag the show selected Element or Contents Pages
                 $output.= "<li ";
                 if($page["id"]==$pages){
-                $output.="class=\"selected\" ";
+                $output.="class=\"selected\"";
                 }
                 $output.= ">";// Closing Li Selected Tag 
                 // initating ancqar tag
                 $output.="<a href=\"manage_content.php?page="; 
                 $output.=urlencode($page["id"]);
                 $output.="\">";
-                $output.=strtoupper($page["menu_name"]);
+                $output.=strtoupper($page["menu_name"])." (p)";
                 $output.="</a>";
                 $output.="</li></ul>";
             } 
@@ -117,7 +117,7 @@
         header("Location:{$place}");
         exit;
     }
-        function selected_position(){
+    function selected_position(){
             global $current_subject;
          $subject_set = find_subject();
          $subject_count = mysqli_num_rows($subject_set);
@@ -132,4 +132,72 @@
          }
     }
     
+    function page_position(){
+            global $current_subject;
+         $pages_set = find_pages_for_subject($current_subject['id']);
+         $page_count = mysqli_num_rows($pages_set);
+    
+         for($count=1;$count<=($page_count+1);$count++){ 
+    
+         echo "<option value=\"{$count}\">{$count}</option> ";
+         }
+    }
+    function pages_position(){
+            global $current_subject;
+         $pages_set = find_pages_for_subject($current_subject['id']);
+         $page_count = mysqli_num_rows($pages_set);
+    
+         for($count=1;$count<=$page_count;$count++){ 
+    
+         echo "<option value=\"{$count}\">{$count}</option> ";
+         }
+    }
+   function public_navigation($subjects, $pages){
+        global $subject_set; 
+        global $page_set;
+        $subject_set = find_subject(); 
+        confirm_query($subject_set);
+    
+        $output="<ul class=\"subjects\">";
+    
+        while($subject = mysqli_fetch_assoc($subject_set)){
+        $output.= "<li";
+        if($subjects && $subject["id"]==$subjects['id']){
+        $output.=" class=\"selected\" ";
+        }
+        $output.= ">" ;// ending of li tag or selected class.
+    
+        $output.="<a href=\"index.php?subject=";
+        $output.= urlencode($subject["id"]);
+        $output.="\">"; // ending of <a> tag having url
+        $output.= strtoupper($subject["manu_name"]);
+        $output.="</a>";
+    
+        // starting query for the pages 
+        if($subjects['id'] == $subject['id'] || $pages['subject_id'] == $subject['id']){ 
+        $page_set = find_pages_for_subject($subject["id"]); 
+        confirm_query($page_set);
+        $output.="<ul class=\"pages\">";
+    
+            while($page = mysqli_fetch_assoc($page_set)){
+                // Start of Li tag the show selected Element or Contents Pages
+                $output.= "<li ";
+                if($pages && $page["id"]==$pages['id']){
+                $output.="class=\"selected\"";
+                }
+                $output.= ">";// Closing Li Selected Tag 
+                // initating ancqar tag
+                $output.="<a href=\"index.php?page="; 
+                $output.=urlencode($page["id"]);
+                $output.="\">";
+                $output.=strtoupper($page["menu_name"])." (p)";
+                $output.="</a>";
+                $output.="</li></ul>";
+              }
+            } 
+               $output.="</li>";
+         }
+            $output.="</ul>";
+            return $output;
+    }
 ?>

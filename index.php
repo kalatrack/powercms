@@ -5,13 +5,20 @@
 
 <div id="main">
     <div id="navigation">
-      <?php echo navigation($current_subject,  $current_page);?>
+      <?php echo public_navigation($current_subject,  $current_page);?>
     </div>
     <div id="page">
-        <h2>Manage Content</h2>
+       <h2>Manage Content</h2>
+        <?php if($current_subject){ ?>
+        <b>Manage Subject:</b><br>
+        <b>Menu Name:</b><?php echo "<b><i>".strtoupper($current_subject["manu_name"])."</i></b>"; echo " <br>   "; ?>
         
-        <li><a href="_/includes/manage_content.php">Manage Website Content</a></li>
-        <li><a href="admins.php">Manage Admins</a></li>
+        <?php }elseif ($current_page){ ?>
+        <b>Content:</b><div class="view-content"><?php echo htmlentities(ucwords($current_page["content"]));?></div>
+        <br>
+        <?php }else{ ?>
+        Please Selet Page:
+        <?php }?>
     </div>
 </div>
 <?php include("_/includes/layout/footer.php");?>

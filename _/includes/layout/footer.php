@@ -1,5 +1,5 @@
    <footer>
-                <p><center><b>CopyRight 2013</b></center></p>
+                <p><center><b>CopyRight <?php echo date("Y/M/h:m:s")?></b></center></p>
    </footer>
     </body>
 </html>

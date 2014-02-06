@@ -28,16 +28,19 @@ footer{
     color: #ff00dc;
 }
 #page{
-    float: left; height: 100%;padding-left: 2em;vertical-align: top;background: #ffd800;
+    float: left; height: 100%;padding-left: 2em;vertical-align: top;background: #ffd800; 
 }
 .selected{
-    font-weight: bold; font-family: 'Courier New'; font: #000;
+    font-weight: bold; font-family: 'Courier New'; font: #000; float: right;
 }
-ul.subjects{ margin: 1em 0; padding-left: 0; list-style: none; 
+ul.subjects{ margin: 1em 0; padding-left: 0; list-style: none; list-style: initial;
 }
 ul.pages{
-    padding-left: 0; list-style: square; font-weight: normal;
+    padding-left: 0; list-style: square; font-weight: normal; margin: 0 ; 
 }
 div.msg{
     border: 2px solid #000; color: #0026ff; font-weight: bold; margin: 2em 0;padding: 1em 0;
+}
+.view-content{
+    color: #0026ff; padding: 1em; font-style: italic;
 }
